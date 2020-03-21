@@ -3,6 +3,7 @@ const figlet = require("figlet");
 const clear = require("clear");
 const question = require("./lib/inquirer");
 const fileUtil = require("./lib/fileUtil");
+const open = require("open");
 
 const init = () => {
   clear();
@@ -14,20 +15,28 @@ const init = () => {
       })
     )
   );
-  console.log("Create a new post");
+  console.log(chalk.blue("Create a new post"));
 };
 
 const success = filepath => {
   console.log(chalk.yellow.bold(`Done! File created at ${filepath}`));
 };
 
+const pad = number => number.toString().padStart(2, "0");
+
 const run = async () => {
   init();
   const answer = await question.askPostInfo();
   const today = new Date();
-  answer.date = `${today.getFullYear()}-${today.getMonth() +
-    1}-${today.getDate()}`;
-  success(fileUtil.createFile(answer));
+  answer.date = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(
+    today.getDate()
+  )}`;
+  const filePath = fileUtil.createFile(answer);
+  success(filePath);
+
+  if ((await question.openFile()).open) {
+    await open(filePath);
+  }
 };
 
 run();
