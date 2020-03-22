@@ -19,32 +19,63 @@ const argv = require("yargs")
     "$0",
     "Create file with default template",
     yargs => {
-      return yargs.option("t").option("p");
+      return yargs
+        .option("t", {
+          type: "string",
+          alias: "template",
+          describe: "Create file with a specific template",
+          nargs: 1
+        })
+        .option("p", {
+          type: "string",
+          alias: "path",
+          describe: "Output directory for markdown files",
+          nargs: 1
+        });
     },
     ({ t, p }) => run(t, p)
   )
   .command(
     "config",
     "Open the configuration file",
-    yargs => yargs.p,
+    yargs =>
+      yargs.option("p", {
+        alias: "path",
+        type: "string",
+        nargs: 1,
+        describe: "Default path for markdown files created"
+      }),
     ({ p }) => {
       config.set("outputPath", p);
       console.log("Default path modified");
     }
   )
+  .command(
+    "new",
+    "Create a new template",
+    yargs =>
+      yargs
+        .option("l", {
+          alias: "list",
+          type: "array",
+          describe: "Fields that are lists"
+        })
+        .option("s", {
+          alias: "string",
+          type: "string",
+          describe: "Fields that are strings"
+        }),
+    ({ l, s }) => console.log(l, s)
+  )
   .help("h")
   .alias("h", "help")
-  .alias("t", "template")
-  .nargs("t", 1)
-  .describe("t", "Create file with a specific template")
   .example("$0 -t mytemplate")
-  .alias("p", "path")
-  .nargs("p", 1)
-  .describe("p", "Output directory for markdown files")
   .example("$0 -p ..")
   .example("$0 -p /path/to/your/directory")
   .example("$0 config -p /default/output/directory")
-  .usage("Usage: $0 <command> [options]").argv;
+  .usage(
+    "Usage: $0 <command> [options]\n Use $0 <command> -h to see available options for each command"
+  ).argv;
 
 function init() {
   clear();
