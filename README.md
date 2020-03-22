@@ -10,7 +10,25 @@ It sounds cute.
 
 ## Installation
 
-`yarn add postie`
+### Global
+
+`yarn global add postie` **OR**
+
+`npm install -g postie`
+
+Then you can run `postie` in your command line.
+
+### Local
+
+`yarn add postie` **OR**
+
+`npm install postie`
+
+Run with
+
+`yarn postie` **OR**
+
+`npx postie`
 
 ## Usage
 

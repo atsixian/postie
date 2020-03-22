@@ -1,8 +1,8 @@
 const chalk = require("chalk");
+const open = require("open");
 const fileUtil = require("../lib/fileUtil");
 const question = require("../lib/inquirer");
 const init = require("../commands/init");
-
 const success = filepath => {
   console.log(chalk.yellow.bold(`Done! File created at ${filepath}`));
 };
