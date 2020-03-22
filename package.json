@@ -1,5 +1,5 @@
 {
-  "name": "postie",
+  "name": "@deerhound/postie",
   "version": "1.0.0",
   "description": "Generate metadata for your markdown files",
   "main": "index.js",
@@ -26,5 +26,8 @@
   "devDependencies": {
     "jest": "^25.1.0",
     "mock-fs": "^4.11.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

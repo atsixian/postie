@@ -2,7 +2,7 @@
 
 A handy tool to create metadata for your markdown blog posts.
 
-![Demo](./doc/demo.svg)
+![Demo](https://github.com/Deerhound579/postie/blob/master/doc/demo.svg)
 
 ## Why the name
 
@@ -12,17 +12,17 @@ It sounds cute.
 
 ### Global
 
-`yarn global add postie` **OR**
+`yarn global add @deerhound/postie` **OR**
 
-`npm install -g postie`
+`npm install -g @deerhound/postie`
 
 Then you can run `postie` in your command line.
 
 ### Local
 
-`yarn add postie` **OR**
+`yarn add @deerhound/postie` **OR**
 
-`npm install postie`
+`npm install @deerhound/postie`
 
 Run with
 
@@ -69,7 +69,7 @@ Options:
 
 `postie new template`
 
-![create-templae](./doc/newtemplate.svg)
+![create-templae](https://github.com/Deerhound579/postie/blob/master/doc/newtemplate.svg)
 
 ### Format of the template file
 
@@ -90,8 +90,9 @@ const questions = [
 ];
 ```
 
-![example](./doc/example.png)
-![output](./doc/example-output.png)
+![example](https://github.com/Deerhound579/postie/blob/master/doc/example.png)
+
+![output](https://github.com/Deerhound579/postie/blob/master/doc/example-output.png)
 
 After you run `postie template`, Postie will open the editor, and you should create a question **array** following the format above.
 
