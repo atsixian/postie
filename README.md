@@ -8,17 +8,49 @@ A handy tool to create metadata for your markdown blog posts.
 
 It sounds cute.
 
+## Installation
+
+`yarn add postie`
+
 ## Usage
 
-`postie config`: Open the configuration file
+```
+postie
 
-`postie -p [PATH]`: Specify the output path
+Options:
+  --template, -t  Create file with a specific template
+  --path, -p      Output directory for markdown files
+  --help, -h      Show help
+```
 
-`postie -t [TEMPLATE]`: Generate file with a specific template. You need to make sure the template is already in your config file. See how to create a template below.
+**NOTE** Make sure the template used in `postie -t [TEMPLATE]` exists. You can use `postie template -l` to list all templates.
+
+```
+postie template
+
+Create a new template
+
+Options:
+  --list, -l  List all templates
+  --help, -h  Show help
+```
+
+```
+postie config
+
+Open the configuration file
+
+Options:
+  --path, -p   Default output path for markdown files created
+  --list, -l   List all configs
+  --clear, -c  Clear all configs
+  --help, -h   Show help
+```
 
 ## Create Template
 
 `postie new template`
+![create-templae](./doc/newtemplate.svg)
 
 ### Format of the template file
 
@@ -42,23 +74,6 @@ const questions = [
 ![example](./doc/example.png)
 ![output](./doc/example-output.png)
 
-After you run `postie new template`, Postie will open the editor, and you should create a question array following the format above. Note that the default type is `input`, so if you write
-
-```javascript
-[
-  {
-    name: "title"
-  }
-];
-```
-
-Postie will generate
-
-```
----
-date: {{date}}
-title: {{title}}
----
-```
+After you run `postie template`, Postie will open the editor, and you should create a question **array** following the format above.
 
 For all possible prompt types, please see [doc for Inquirer.js](https://github.com/SBoudrias/Inquirer.js/#prompt-types).

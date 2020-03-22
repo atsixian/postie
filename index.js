@@ -35,19 +35,25 @@ const argv = require("yargs")
           alias: "p",
           type: "string",
           nargs: 1,
-          describe: "Default path for markdown files created"
+          describe: "Default output path for markdown files created"
         })
         .option("list", {
           alias: "l",
           type: "array",
           describe: "List all configs"
+        })
+        .option("clear", {
+          alias: "c",
+          describe: "Clear all configs"
         }),
-    ({ p, l }) => {
-      if (l) console.log(config.all);
-      else if (p) open(config.path);
-      else {
+    ({ p, l, c }) => {
+      if (c) config.clear();
+      else if (l) console.log(config.all);
+      else if (p) {
         config.set("outputPath", p);
         console.log("Default path modified");
+      } else {
+        open(config.path);
       }
     }
   )
@@ -60,9 +66,12 @@ const argv = require("yargs")
         type: "list",
         describe: "List all templates"
       }),
-    l => {
-      if (l) console.log(config.templates);
-      else newTemplate();
+    ({ l }) => {
+      if (l) {
+        console.log(Object.keys(config.get("templates")));
+      } else {
+        newTemplate();
+      }
     }
   )
   .help("h")
@@ -71,7 +80,6 @@ const argv = require("yargs")
   .example("$0 -p ..")
   .example("$0 -p /path/to/your/directory")
   .example("$0 config -p /default/output/directory")
-  .example("$0 config -l")
   .usage(
     "Usage: $0 <command> [options]\n Use $0 <command> -h to see available options for each command"
   ).argv;
