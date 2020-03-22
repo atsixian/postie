@@ -4,6 +4,7 @@ const open = require("open");
 const { config } = require("./lib/config");
 const postie = require("./commands/postie");
 const newTemplate = require("./commands/newTemplate");
+const { importTemplate } = require("./lib/templateUtil");
 
 const argv = require("yargs")
   .command(
@@ -61,13 +62,21 @@ const argv = require("yargs")
     "template",
     "Create a new template",
     yargs =>
-      yargs.option("list", {
-        alias: "l",
-        type: "list",
-        describe: "List all templates"
-      }),
-    ({ l }) => {
-      if (l) {
+      yargs
+        .option("list", {
+          alias: "l",
+          type: "list",
+          describe: "List all templates"
+        })
+        .option("import", {
+          alias: "i",
+          nargs: 1,
+          describe: "Create template from a javascript file"
+        }),
+    ({ l, i }) => {
+      if (i) {
+        importTemplate(i);
+      } else if (l) {
         console.log(Object.keys(config.get("templates")));
       } else {
         newTemplate();
@@ -80,6 +89,7 @@ const argv = require("yargs")
   .example("$0 -p ..")
   .example("$0 -p /path/to/your/directory")
   .example("$0 config -p /default/output/directory")
+  .example("$0 template -i mytemplate.js")
   .usage(
     "Usage: $0 <command> [options]\n Use $0 <command> -h to see available options for each command"
   ).argv;

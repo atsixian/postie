@@ -50,6 +50,7 @@ Create a new template
 
 Options:
   --list, -l  List all templates
+  --import, -i  Create template from a javascript file
   --help, -h  Show help
 ```
 
@@ -67,7 +68,7 @@ Options:
 
 ## Create Template
 
-`postie new template`
+### Create a simple template with `postie new template`
 
 ![create-templae](./doc/newtemplate.svg)
 
@@ -95,5 +96,10 @@ const questions = [
 ![output](./doc/example-output.png)
 
 After you run `postie template`, Postie will open the editor, and you should create a question **array** following the format above.
+
+### More complicated
+
+Check out the [example](https://github.com/Deerhound579/postie/blob/master/lib/templates/mytemp.js).
+You can write your own file and import it with `postie template -i /path/to/your/file`.
 
 For all possible prompt types, please see [doc for Inquirer.js](https://github.com/SBoudrias/Inquirer.js/#prompt-types).
