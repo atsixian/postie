@@ -50,6 +50,7 @@ Options:
 ## Create Template
 
 `postie new template`
+
 ![create-templae](./doc/newtemplate.svg)
 
 ### Format of the template file
