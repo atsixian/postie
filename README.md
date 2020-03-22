@@ -2,7 +2,7 @@
 
 A handy tool to create metadata for your markdown blog posts.
 
-![Demo](https://github.com/Deerhound579/postie/blob/master/doc/demo.svg)
+![Demo](./doc/demo.svg)
 
 ## Why the name
 
@@ -69,7 +69,7 @@ Options:
 
 `postie new template`
 
-![create-templae](https://github.com/Deerhound579/postie/blob/master/doc/newtemplate.svg)
+![create-templae](./doc/newtemplate.svg)
 
 ### Format of the template file
 
@@ -90,9 +90,9 @@ const questions = [
 ];
 ```
 
-![example](https://github.com/Deerhound579/postie/blob/master/doc/example.png)
+![example](./doc/example.png)
 
-![output](https://github.com/Deerhound579/postie/blob/master/doc/example-output.png)
+![output](./doc/example-output.png)
 
 After you run `postie template`, Postie will open the editor, and you should create a question **array** following the format above.
 

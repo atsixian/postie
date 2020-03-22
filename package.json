@@ -1,6 +1,6 @@
 {
   "name": "@deerhound/postie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate metadata for your markdown files",
   "main": "index.js",
   "repository": "https://github.com/Deerhound579/postie.git",
